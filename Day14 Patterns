@@ -1,0 +1,95 @@
+UC.1. User need to enter a valid first name?
+Ans:
+#!/bin/bash
+shopt -s extglob
+echo "enter the Fname : "
+read name
+pat="^[A-Z]{1}[a-z]{2}$"
+if [[ $name =~ $pat ]]
+then
+    	echo valid
+else
+    	echo invalid
+fi
+  
+UC.2. user need to enter a valid last name
+Ans:
+#!/bin/bash
+shopt -s extglob
+ echo "enter the Lname : "
+read name
+pat="^[A-Z]{1}[a-z]{2}$"
+if [[ $name =~ $pat ]]
+then
+    	echo valid
+else
+    	echo invalid
+fi
+ 
+UC.3. user need to enter a valid email
+Ans:
+#!/bin/bash
+shopt -s extglob
+echo "enter the mail address to check: "
+read add
+#pat="^[a-zA-Z0-9]+@[a-zA-Z]+.[a-zA-Z]{2,4}$"
+pat="^[a-zA-Z0-9]+([._+#][a-zA-Z0-9]+)*@[a-zA-Z]+.[a-zA-Z]{2,4}(.[a-zA-Z]{2,2})?$"
+if [[ $add =~ $pat ]]
+then
+    	echo valid
+else
+    	echo invalid
+fi
+UC.4. user need to follow pre defined mobile format.  
+Ans:
+#!/bin/bash -x
+ shopt -s extglob
+echo "pls enter ur mobile number"
+read num
+pat="^[91][  ][7-9]{1}[0-9]{9}$"
+ 
+if [[ $num =~ $pat ]]
+  then
+	echo valid
+  else
+	echo invalid
+fi
+UC.5. USER NEED TO FOLLOW PRE DEFINED PASSWORD RULES.
+Minium 8 characters.
+UC.6. shoud have atleast 1 upper case.
+UC.7.should have at least 1 number in the password
+UC.8. Hs exactly 1 special character
+Ans:
+#!/bin/bash -x
+shopt -s extglob
+echo "pls enter the password"
+read pass
+pat="^(?=.*[A-Z])(?=.[0-9])(?=.*[@!#$%^&*-+=()]){8,}$"
+if [[ $pass =~ $pat ]]
+  then
+	echo valid
+  else
+	echo invalid
+fi
+ 
+ 
+ 
+Que2. Sample emails to test?
+Ans:
+#!/bin/bash
+ shopt -s extglob
+ echo "enter the mail address to check: "
+read add
+#pat="^[a-zA-Z0-9]+@[a-zA-Z]+.[a-zA-Z]{2,4}$"
+pat="^[a-zA-Z0-9]+([._+#][a-zA-Z0-9]+)*@[a-zA-Z]+.[a-zA-Z]{2,4}(.[a-zA-Z]{2,2})>
+if [[ $add =~ $pat ]]
+then
+    	echo valid
+else
+    	echo invalid
+fi
+ 
+ 
+ 
+
+
