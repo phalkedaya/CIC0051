@@ -1,0 +1,130 @@
+Q2- Move files from one folder to the respective folder.
+#! /bin/bash
+For file in `ls *.txt`
+do
+folderName=`echo $file | awk  –F. ‘{print $1}’`;
+if  [ -d $folderName ]
+then
+rm –r $folderName;
+fi
+mkdir $folderName;
+echo copying $file to $folderName;
+cp $file to $folderName;
+done
+
+Q3-Append current date to all log files name which has extension .log.1 from a folder.
+Answer:
+#! /bin/bash
+
+touch test.log.1 abc.log.1 def.log.1 jkl.log.1
+echo all files to rename  in current directory: *.log.1
+
+for file in `ls *.log.1`;
+do
+        seg_file=`echo $file | awk -F. '{print $1}'`;
+
+        date_format=`date +"%d-%m-%y"`;
+
+        new_file_name="${sef_file}.${date_format}.log";
+
+        mv $file $new_file_name;
+
+        echo $seg_file $new_file_name;
+done
+
+
+
+Q5-check if a folder exists or not. If its not present, create it
+Answer: [ -d codefolder ] | mkdir codefolder
+OR
+#! /bin/bash
+
+read -p "enter the  folder name  which  we want to check: " Folder
+
+if [ -d $Folder ]
+
+then
+        echo  $Folder already exists;
+else
+        mkdir $Folder;
+
+        echo $Folder is created;
+fi
+
+
+Q6- Execute command “hello” and “ls” and check its execution status and print whether command excuted successful or not.
+Answer: 
+$ Hello 
+Bash: Hello: command not found    //hello is not command//
+$ ls
+//all files print//
+$?
+Bash: 0: command not found        //ls is command coz 0 came//
+
+
+Q7- Set environment usersecret=” “ if its already not set.
+Answer: 
+ #! /bin/bash
+
+if[ -d $usersecret ]
+then
+        echo the name already exists;
+else
+        export usersecret= dH34xJaa23;
+        echo env | grep $usersecret;
+fi
+
+
+
+Q8- find a word “systemd” from all log files in the folder/var/log and print number of occurrence more than 0 against each file.
+Answer: $ grep -c "systemd" access.log
+
+Q.9- create process list table displays process id, parent process id, command name, % of memory consumption, % of cpu utilization.
+
+ Answer : $ ps -0 pid,ppid,cmd,%mem,pcpu
+
+
+Q.10- print list of last 4 frequently access urls.
+$ cat access.log  | awk '{print $11}' | sort | uniq -c | sort -n | tail -4
+
+Q.11- print list of last 4 frequently access unique urls .
+$ cat access.log |  awk ‘{print $11}’ | sort | uniq –c | sort –n | head -4
+
+Q.12- print list of web response code count in the unique sorted order.
+$ cat access.log | awk '{print $9}' | uniq -c | head -4
+
+Q.13-print list of last 10 unique sorted client IP.
+$ cat access.log | awk '{print $1}' | head -10
+
+
+Q.14-Data Analysis 
+i) $ cat data.csv | awk '{$4>=10000} {print $2 " " $7}'
+
+ii) $ cat data.csv |grep -i captain | awk '{sum=sum+$7}END{print s
+um/NR}’
+
+iii) $ cat data.csv | awk '{if($3 > 7000 && $5< 10000)}END{print $3 " " $5}'
+
+iv) $ $ cat data.csv | awk '{sum+=$4}END{print sum/NR}'
+
+
+
+
+Q.15- Find the difference between original file and the updated file.apply the changes to the original file.
+
+#! /bin/bash
+
+mkdir original updated;
+touch ori_file.sh upd_file.sh;
+cp ori_file.sh original;
+cp upd_file.sh updated;
+diff -rq original updated;
+mkdir ori_backup;
+cp original ori_backup;
+cp upd_file.sh ori_file.sh;
+mv ori_backup.sh  ori_backup;
+cmp updated ori_backup;
+
+
+
+
